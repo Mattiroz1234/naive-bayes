@@ -18,8 +18,8 @@ def predict_naive_bayes(model, row):
 
 def evaluate(df, model, target_col):
     correct = 0
-    for _, row in df.iterrows():
-        pred = predict_naive_bayes(model, row)
-        if pred == row[target_col]:
+    for i, row in df.iterrows():
+        predi = predict_naive_bayes(model, row)
+        if predi == row[target_col]:
             correct += 1
     return correct / len(df)
