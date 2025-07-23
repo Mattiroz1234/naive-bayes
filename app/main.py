@@ -1,12 +1,15 @@
-from training import train_naive_bayes
-from check import evaluate
-from prediction import get_para_to_classify
+from core.training import train_naive_bayes
+from core.check import evaluate
+from core.prediction import get_para_to_classify
 import pandas as pd
 import statistics
+import os
 
 
 def main():
-    df = pd.read_csv("health_generated.csv")
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+    csv_path = os.path.join(BASE_DIR, "data", "health_generated.csv")
+    df = pd.read_csv(csv_path)
     target = "risk"
     model = None
 
@@ -42,7 +45,7 @@ def main():
 
 
 def stat():
-    df = pd.read_csv("health_generated.csv")
+    df = pd.read_csv("data/health_generated.csv")
     target = "risk"
     a = []
     for i in range(20):
