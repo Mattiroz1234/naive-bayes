@@ -26,4 +26,4 @@ def get_para_to_classify(file):
 
 
 
-print(get_para_to_classify('../health_generated.csv'))
+print(get_para_to_classify('../app/data/health_generated.csv'))
