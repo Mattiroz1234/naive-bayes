@@ -1,6 +1,6 @@
-from core.training import train_naive_bayes
-from core.check import evaluate
-from core.prediction import get_para_to_classify
+from model_side.training import train_naive_bayes
+from app.classifier_side.check import evaluate
+from model_side.prediction import get_para_to_classify
 import pandas as pd
 import statistics
 import os

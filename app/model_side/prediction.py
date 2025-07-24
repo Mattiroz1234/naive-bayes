@@ -1,4 +1,4 @@
-from .check import predict_naive_bayes
+from app.classifier_side.check import predict_naive_bayes
 
 def get_para_to_classify(model, target):
 
