@@ -1,5 +1,6 @@
 import math
 
+# Predicts the class of a single row using the Naive Bayes model
 def predict_naive_bayes(model, row):
     scores = {}
 
@@ -16,6 +17,7 @@ def predict_naive_bayes(model, row):
     return max(scores, key=scores.get)
 
 
+# Evaluates model accuracy on a DataFrame
 def evaluate(df, model, target_col):
     correct = 0
     for i, row in df.iterrows():

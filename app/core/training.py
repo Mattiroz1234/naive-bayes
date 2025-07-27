@@ -1,3 +1,4 @@
+# Trains a Naive Bayes model from a DataFrame
 def train_naive_bayes(df, target_col):
     model = {
         "p_base": {},

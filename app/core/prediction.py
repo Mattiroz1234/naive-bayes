@@ -1,5 +1,6 @@
 from .check import predict_naive_bayes
 
+# Collects user input for features and returns predicted class
 def get_para_to_classify(model, target):
 
     features = [col for col in model["features"] if col != target]

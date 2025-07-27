@@ -9,6 +9,7 @@ import os
 
 app = FastAPI()
 
+# Creates a model
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 csv_path = os.path.join(BASE_DIR, "data", "health_generated.csv")
 df_health = pd.read_csv(csv_path)
@@ -23,11 +24,13 @@ models = {
 }
 
 
+# bace function
 @app.get("/")
 def root():
     return {"message": "Naive Bayes Prediction API"}
 
 
+# get function for health model
 @app.get("/predict")
 def predict(
     age_group: AgeGroup = Query(...),
@@ -48,10 +51,12 @@ def predict(
     return {"prediction": prediction}
 
 
+
 class GenericInput(BaseModel):
     model_name: str
     data: Dict[str, str]
 
+# General function for all models
 @app.post("/predict/custom")
 def gen_predict(input_data: GenericInput):
     if input_data.model_name not in models:

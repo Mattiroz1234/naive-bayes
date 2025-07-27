@@ -6,6 +6,7 @@ import statistics
 import os
 
 
+# Main menu loop: lets user evaluate model or make predictions
 def main():
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
     csv_path = os.path.join(BASE_DIR, "data", "health_generated.csv")
@@ -44,6 +45,7 @@ def main():
             print("Invalid option. Please try again.")
 
 
+# Runs multiple evaluations and prints average, min, max, and median accuracy
 def stat():
     df = pd.read_csv("data/health_generated.csv")
     target = "risk"
