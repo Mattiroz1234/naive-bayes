@@ -10,7 +10,7 @@ app = FastAPI()
 model_cache = {}
 
 
-
+# get the model
 def get_model_cached(model_name: str):
     if model_name in model_cache:
         return model_cache[model_name]
@@ -27,11 +27,13 @@ def get_model_cached(model_name: str):
         raise HTTPException(status_code=500, detail=f"Trainer service error: {str(e)}")
 
 
+# bace function
 @app.get("/")
 def root():
     return {"message": "Naive Bayes Prediction API"}
 
 
+# get function for health model
 @app.get("/predict")
 def predict(
     age_group: AgeGroup = Query(...),
@@ -54,17 +56,19 @@ def predict(
     return {"prediction": prediction}
 
 
+
 class GenericInput(BaseModel):
     model_name: str
     data: Dict[str, str]
 
+# General function for all models
 @app.post("/predict/custom")
 def gen_predict(input_data: GenericInput):
     model = get_model_cached(input_data.model_name)
     prediction = predict_naive_bayes(model, input_data.data)
     return {"prediction": prediction}
 
-
+# Initializing the model
 @app.post("/reload_model")
 def reload_model(model_name: str):
     if model_name in model_cache:

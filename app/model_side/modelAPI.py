@@ -7,6 +7,7 @@ app = FastAPI()
 df = pd.read_csv("app/data/health_generated.csv")
 model = train_naive_bayes(df, "risk")
 
+# Exporting the model
 @app.get("/model")
 def get_model():
     return model
