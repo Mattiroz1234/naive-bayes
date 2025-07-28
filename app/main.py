@@ -8,8 +8,8 @@ import os
 
 # Main menu loop: lets user evaluate model or make predictions
 def main():
-    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-    csv_path = os.path.join(BASE_DIR, "data", "health_generated.csv")
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    csv_path = os.path.join(base_dir, "data", "health_generated.csv")
     df = pd.read_csv(csv_path)
     target = "risk"
     model = None
@@ -63,12 +63,16 @@ def stat():
     minimum = min(numbers)
     median = statistics.median(numbers)
 
+    print("=================")
     print(f"average: {average:.2f}%")
     print(f"maximum: {maximum:.2f}%")
     print(f"minimum: {minimum:.2f}%")
     print(f"median: {median:.2f}%")
+    print("=================")
+
 
 if __name__ == "__main__":
     main()
     # for i in range(5):
     #     stat()
+
